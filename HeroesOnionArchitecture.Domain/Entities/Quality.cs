@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace HeroesOnionArchitecture.Core.Domain.Entities
 {
-    public class Universe
+    public class Quality
     {
-        public int UniverseId { get; set; }
+        public int QualityId { get; set; }
+
         public string Name { get; set; }
 
         public ICollection<Hero> Heroes { get; set; }
