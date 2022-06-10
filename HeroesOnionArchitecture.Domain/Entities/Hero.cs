@@ -8,8 +8,9 @@ namespace HeroesOnionArchitecture.Core.Domain.Entities
 {
     public class Hero
     {
-        public int HeroId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
+        public string PhotoUrl { get; set; }
 
         public int QualityId { get; set; }
         public Quality Quality { get; set; }

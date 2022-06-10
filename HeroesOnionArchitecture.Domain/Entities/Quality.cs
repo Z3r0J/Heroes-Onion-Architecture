@@ -8,7 +8,7 @@ namespace HeroesOnionArchitecture.Core.Domain.Entities
 {
     public class Quality
     {
-        public int QualityId { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

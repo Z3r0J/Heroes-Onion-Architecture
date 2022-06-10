@@ -8,7 +8,7 @@ namespace HeroesOnionArchitecture.Core.Domain.Entities
 {
     public class Universe
     {
-        public int UniverseId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<Hero> Heroes { get; set; }
