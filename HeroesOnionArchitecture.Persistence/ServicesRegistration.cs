@@ -1,4 +1,5 @@
-﻿using HeroesOnionArchitecture.Core.Application.Interfaces.Repository.Heroes;
+﻿using HeroesOnionArchitecture.Core.Application.Interfaces.Repository;
+using HeroesOnionArchitecture.Core.Application.Interfaces.Repository.Heroes;
 using HeroesOnionArchitecture.Infrastructure.Persistence.Contexts;
 using HeroesOnionArchitecture.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ namespace HeroesOnionArchitecture.Infrastructure.Persistence
             }
 
             #region Repositories
-
+            service.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             service.AddTransient<IHeroRepository, HeroRepository>();
 
         #endregion

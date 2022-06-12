@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace HeroesOnionArchitecture.Core.Application.Interfaces.Services.Heroes
 {
-    public interface IHeroServices
+    public interface IHeroServices :IGenericServices<SaveHeroeViewModel,HeroViewModel>
     {
-        Task Update(SaveHeroeViewModel vm);
-        Task Delete(int id);
-        Task Add(SaveHeroeViewModel vm);
-        Task<SaveHeroeViewModel> GetByIdHeroeViewModel(int id);
-        Task<List<HeroViewModel>> GetAllViewModel();
+
     }
 }

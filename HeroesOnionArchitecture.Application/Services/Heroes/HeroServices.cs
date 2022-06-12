@@ -70,15 +70,15 @@ namespace HeroesOnionArchitecture.Core.Application.Services.Heroes
 
         public async Task<List<HeroViewModel>> GetAllViewModel() {
 
-            var HeroList = await _repository.GetAllAsync();
+            var HeroList = await _repository.GetAllWithIncludeAsync(new List<string>{"Universe","Quality"});
 
             return HeroList.Select(heroList => new HeroViewModel
             {
                 Id = heroList.Id,
                 Name = heroList.Name,
                 PhotoUrl = heroList.PhotoUrl,
-                Quality = "Prueba",
-                Universe = "Prueba"
+                Quality = heroList.Quality.Name,
+                Universe = heroList.Universe.Name
             }).ToList();        
         }
     }

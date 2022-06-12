@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace HeroesOnionArchitecture.Core.Application.Interfaces.Repository.Heroes
 {
-    public interface IHeroRepository
+    public interface IHeroRepository : IGenericRepository<Hero>
     {
-        Task AddAsync(Hero hero);
-        Task<List<Hero>> GetAllAsync();
-        Task<Hero> GetByIdAsync(int id);
-        Task UpdateAsync(Hero hero);
-        Task DeleteAsync(Hero hero);
+
     }
 }
