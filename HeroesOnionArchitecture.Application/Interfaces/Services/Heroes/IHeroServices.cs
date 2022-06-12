@@ -13,6 +13,6 @@ namespace HeroesOnionArchitecture.Core.Application.Interfaces.Services.Heroes
         Task Delete(int id);
         Task Add(SaveHeroeViewModel vm);
         Task<SaveHeroeViewModel> GetByIdHeroeViewModel(int id);
-        Task<List<SaveHeroeViewModel>> GetAllViewModel();
+        Task<List<HeroViewModel>> GetAllViewModel();
     }
 }

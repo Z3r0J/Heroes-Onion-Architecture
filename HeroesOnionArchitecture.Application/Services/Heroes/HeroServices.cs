@@ -68,17 +68,17 @@ namespace HeroesOnionArchitecture.Core.Application.Services.Heroes
             };
         }
 
-        public async Task<List<SaveHeroeViewModel>> GetAllViewModel() {
+        public async Task<List<HeroViewModel>> GetAllViewModel() {
 
             var HeroList = await _repository.GetAllAsync();
 
-            return HeroList.Select(heroList => new SaveHeroeViewModel
+            return HeroList.Select(heroList => new HeroViewModel
             {
                 Id = heroList.Id,
                 Name = heroList.Name,
                 PhotoUrl = heroList.PhotoUrl,
-                QualityId = heroList.QualityId,
-                UniverseId = heroList.UniverseId
+                Quality = "Prueba",
+                Universe = "Prueba"
             }).ToList();        
         }
     }
