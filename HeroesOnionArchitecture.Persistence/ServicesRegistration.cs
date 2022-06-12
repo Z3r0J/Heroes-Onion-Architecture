@@ -1,4 +1,6 @@
-﻿using HeroesOnionArchitecture.Infrastructure.Persistence.Contexts;
+﻿using HeroesOnionArchitecture.Core.Application.Interfaces.Repository.Heroes;
+using HeroesOnionArchitecture.Infrastructure.Persistence.Contexts;
+using HeroesOnionArchitecture.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,10 +14,28 @@ namespace HeroesOnionArchitecture.Infrastructure.Persistence
 {
     public static class ServicesRegistration
     {
+        #region Context
         public static void AddPersistanceInfrastructure(this IServiceCollection service, IConfiguration configuration) {
 
-            service.AddDbContext<ApplicationContext>(options=>options.UseSqlServer(configuration.GetConnectionString("MyConnectionString")));
-        
+            if (configuration.GetValue<bool>("UseInMemoryDatabase"))
+            {
+                service.AddDbContext<ApplicationContext>(options => options.UseInMemoryDatabase("InMemoryDb"));
+            }
+            else
+            {
+                service.AddDbContext<ApplicationContext>(options => 
+                options.UseSqlServer(configuration.GetConnectionString("MyConnectionString"),
+                m=>m.MigrationsAssembly(typeof(ApplicationContext).Assembly.FullName)));
+            }
+
+            #region Repositories
+
+            service.AddTransient<IHeroRepository, HeroRepository>();
+
+        #endregion
         }
+        #endregion
+
+
     }
 }

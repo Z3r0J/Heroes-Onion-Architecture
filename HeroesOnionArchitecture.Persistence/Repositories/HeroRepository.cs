@@ -1,4 +1,5 @@
-﻿using HeroesOnionArchitecture.Core.Domain.Entities;
+﻿using HeroesOnionArchitecture.Core.Application.Interfaces.Repository.Heroes;
+using HeroesOnionArchitecture.Core.Domain.Entities;
 using HeroesOnionArchitecture.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HeroesOnionArchitecture.Infrastructure.Persistence.Repositories
 {
-    public class HeroRepository
+    public class HeroRepository : IHeroRepository
     {
 
         private readonly ApplicationContext _dbContext;
@@ -24,7 +25,7 @@ namespace HeroesOnionArchitecture.Infrastructure.Persistence.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<Hero>> GetAllAsync(Hero hero) {
+        public async Task<List<Hero>> GetAllAsync() {
 
             return await _dbContext.Set<Hero>().ToListAsync();
         }

@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="ViewModel\Hero\" />
     <Folder Include="ViewModel\Universe\" />
     <Folder Include="ViewModel\Quality\" />
   </ItemGroup>
